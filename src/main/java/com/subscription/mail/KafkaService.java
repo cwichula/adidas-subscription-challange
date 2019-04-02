@@ -11,7 +11,6 @@ public class KafkaService {
 
     @KafkaListener(topics = "mail-topic", groupId = "mail-group-id")
     public void listen(final SubscriptionDTO subscriptionDTO) {
-        System.out.println("Received Messasge in group mail-group-id: " + subscriptionDTO.toString());
 
         mailService.sendConfirmation(
                 subscriptionDTO.getMail(),

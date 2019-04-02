@@ -29,7 +29,7 @@ class MailConfig {
     }
 
     @Bean
-    public MailService mailService(final JavaMailSender javaMailSender) {
-        return new MailService(javaMailSender);
+    public MailService mailService(final JavaMailSender javaMailSender, final MailProperties mailProperties) {
+        return new MailService(javaMailSender, mailProperties);
     }
 }

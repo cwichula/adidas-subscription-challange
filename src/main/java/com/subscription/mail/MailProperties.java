@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Getter
-public class MailProperties {
+class MailProperties {
 
     private int mailSmtpPort;
     private String mailSmtpHost;
@@ -16,6 +16,8 @@ public class MailProperties {
     private String mailSmtpAuthEnabled;
     private String mailSmtpStartTlsEnabled;
     private String mailDebugEnabled;
+    private String mailMessageTopic;
+    private String mailMessageDescription;
 
     MailProperties(@Value("${MAIL_SMTP_PORT}") final String mailSmtpPort,
                    @Value("${MAIL_SMTP_HOST}") final String mailSmtpHost,
@@ -24,7 +26,9 @@ public class MailProperties {
                    @Value("${MAIL_TRANSPORT_PROTOCOL}") final String mailTransportProtocol,
                    @Value("${MAIL_SMTP_AUTH_ENABLED}") final String mailSmtpAuthEnabled,
                    @Value("${MAIL_SMTP_STARTTLS_ENABLED}") final String mailSmtpStartTlsEnabled,
-                   @Value("${MAIL_DEBUG_ENABLED}") final String mailDebugEnabled) {
+                   @Value("${MAIL_DEBUG_ENABLED}") final String mailDebugEnabled,
+                   @Value("${MAIL_MESSAGE_TOPIC}") final String mailMessageTopic,
+                   @Value("${MAIL_MESSAGE_DESCRIPTION}") final String mailMessageDescription) {
 
         this.mailSmtpPort = Integer.parseInt(mailSmtpPort);
         this.mailSmtpHost = mailSmtpHost;
@@ -34,5 +38,7 @@ public class MailProperties {
         this.mailSmtpAuthEnabled = mailSmtpAuthEnabled;
         this.mailSmtpStartTlsEnabled = mailSmtpStartTlsEnabled;
         this.mailDebugEnabled = mailDebugEnabled;
+        this.mailMessageTopic = mailMessageTopic;
+        this.mailMessageDescription = mailMessageDescription;
     }
 }

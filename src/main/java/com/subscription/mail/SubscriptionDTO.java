@@ -6,7 +6,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @ToString
-public class SubscriptionDTO {
+class SubscriptionDTO {
     private String id;
     private String firstName;
     private String lastName;

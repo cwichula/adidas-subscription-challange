@@ -2,19 +2,16 @@ package com.subscription.mail;
 
 
 import lombok.AllArgsConstructor;
+import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
 
 @AllArgsConstructor
 public class KafkaService {
-
     private MailService mailService;
 
-    @KafkaListener(topics = "mail-topic", groupId = "mail-group-id")
+    @KafkaListener(topics = "${KAFKA_TOPIC_NAME}", groupId = "${KAFKA_LISTENER_GROUP_ID}")
     public void listen(final SubscriptionDTO subscriptionDTO) {
 
-        mailService.sendConfirmation(
-                subscriptionDTO.getMail(),
-                "New subscription!",
-                String.format("Congratulations %s! You have just subscribed to Adidas Newsletter!", subscriptionDTO.getFirstName()));
+        mailService.sendConfirmation(subscriptionDTO.getMail());
     }
 }

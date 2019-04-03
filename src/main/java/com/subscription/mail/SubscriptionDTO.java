@@ -7,6 +7,7 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 class SubscriptionDTO {
+    private Long id;
     private String email;
     private String firstName;
     private String gender;

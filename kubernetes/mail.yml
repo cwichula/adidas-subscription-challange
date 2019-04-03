@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mail-deploy
+  labels:
+    app: mail-deploy
+spec:
+  selector:
+    matchLabels:
+      app: mail
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mail
+    spec:
+      containers:
+        - name: mail
+          image: infosys/mail:0.0.1-SNAPSHOT
+          ports:
+            - containerPort: 8080
+          env:
+            - name: MAIL_SMTP_PORT
+              value: "587"
+            - name: MAIL_SMTP_HOST
+              value: "smtp.gmail.com"
+            - name: MAIL_ACCOUNT_USERNAME
+              value: "no.replay.subscription@gmail.com"
+            - name: MAIL_ACCOUNT_PASSWORD
+              value: "pvhbnkdyhowfmiks"
+            - name: MAIL_TRANSPORT_PROTOCOL
+              value: "smtp"
+            - name: MAIL_SMTP_AUTH_ENABLED
+              value: "true"
+            - name: MAIL_SMTP_STARTTLS_ENABLED
+              value: "true"
+            - name: MAIL_MESSAGE_TOPIC
+              value: "New Newsletter!"
+            - name: MAIL_MESSAGE_DESCRIPTION
+              value: "Congratulations! You just subscribed to Adidas newsletter!"
+            - name: KAFKA_ADDRESS
+              value: "localhost:9092"
+            - name: KAFKA_TOPIC_NAME
+              value: "mail-topic"
+            - name: KAFKA_LISTENER_GROUP_ID
+              value: "mail-group-id"
+          imagePullPolicy: Never

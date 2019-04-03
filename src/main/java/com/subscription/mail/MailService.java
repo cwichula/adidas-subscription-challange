@@ -14,7 +14,7 @@ public class MailService {
 
     @KafkaListener(topics = "${KAFKA_TOPIC_NAME}", groupId = "${KAFKA_LISTENER_GROUP_ID}")
     public void listen(final SubscriptionDTO subscriptionDTO) {
-        sendConfirmation(subscriptionDTO.getEmail());
+//        sendConfirmation(subscriptionDTO.getEmail());
     }
 
     void sendConfirmation(final String to) {

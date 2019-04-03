@@ -8,7 +8,7 @@ spec:
   selector:
     matchLabels:
       app: mail
-  replicas: 1
+  replicas: 2
   template:
     metadata:
       labels:
@@ -34,14 +34,29 @@ spec:
               value: "true"
             - name: MAIL_SMTP_STARTTLS_ENABLED
               value: "true"
+            - name: MAIL_DEBUG_ENABLED
+              value: "false"
             - name: MAIL_MESSAGE_TOPIC
               value: "New Newsletter!"
             - name: MAIL_MESSAGE_DESCRIPTION
               value: "Congratulations! You just subscribed to Adidas newsletter!"
             - name: KAFKA_ADDRESS
-              value: "localhost:9092"
+              value: "kafka-service:9092"
             - name: KAFKA_TOPIC_NAME
               value: "mail-topic"
             - name: KAFKA_LISTENER_GROUP_ID
               value: "mail-group-id"
           imagePullPolicy: Never
+---
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: mail-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1beta1
+    kind: Deployment
+    name: mail-deploy
+  minReplicas: 2
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 80

@@ -30,6 +30,6 @@ class MailConfig {
 
     @Bean
     public MailService mailService(final JavaMailSender javaMailSender, final MailProperties mailProperties) {
-        return new MailService(javaMailSender, mailProperties);
+        return new MailService(mailProperties, javaMailSender);
     }
 }

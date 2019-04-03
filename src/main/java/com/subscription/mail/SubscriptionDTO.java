@@ -7,17 +7,24 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 class SubscriptionDTO {
-    private String id;
+    private String email;
     private String firstName;
-    private String lastName;
-    private String mail;
-    private String age;
+    private String gender;
+    private String dateOfBith;
+    private String newsletterId;
+    private String isConsent;
 
-    public SubscriptionDTO(String id, String firstName, String lastName, String mail, String age) {
-        this.id = id;
+    SubscriptionDTO(final String email,
+                    final String firstName,
+                    final String gender,
+                    final String dateOfBith,
+                    final String newsletterId,
+                    final String isConsent) {
+        this.email = email;
         this.firstName = firstName;
-        this.lastName = lastName;
-        this.mail = mail;
-        this.age = age;
+        this.gender = gender;
+        this.dateOfBith = dateOfBith;
+        this.newsletterId = newsletterId;
+        this.isConsent = isConsent;
     }
 }

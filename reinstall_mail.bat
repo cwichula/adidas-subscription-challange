@@ -7,4 +7,3 @@ kubectl delete -f kubernetes\mail-service.yml
 kubectl create -f kubernetes\mail.yml
 kubectl create -f kubernetes\mail-service.yml
 
-pause

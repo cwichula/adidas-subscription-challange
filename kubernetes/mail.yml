@@ -47,6 +47,8 @@ spec:
             - name: KAFKA_LISTENER_GROUP_ID
               value: "mail-group-id"
           imagePullPolicy: Never
+      restartPolicy: Always
+
 ---
 apiVersion: autoscaling/v1
 kind: HorizontalPodAutoscaler

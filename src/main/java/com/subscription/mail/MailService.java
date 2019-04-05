@@ -10,7 +10,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Async;
 
 @AllArgsConstructor
-public class MailService {
+class MailService {
     private static final Logger logger = LoggerFactory.getLogger(MailService.class);
 
     private MailProperties mailProperties;

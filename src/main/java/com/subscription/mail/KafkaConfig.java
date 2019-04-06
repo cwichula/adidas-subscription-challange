@@ -26,13 +26,14 @@ class KafkaConfig {
         props.put(ConsumerConfig.GROUP_ID_CONFIG, kafkaProperties.getKafkaListenerGroupId());
 
         return new DefaultKafkaConsumerFactory<>(props,
-                new StringDeserializer(),
-                new JsonDeserializer<>(SubscriptionDTO.class, false));
+                                                 new StringDeserializer(),
+                                                 new JsonDeserializer<>(SubscriptionDTO.class, false));
     }
 
 
     @Bean
-    public ConcurrentKafkaListenerContainerFactory<String, SubscriptionDTO> kafkaListenerContainerFactory(final KafkaProperties kafkaProperties) {
+    public ConcurrentKafkaListenerContainerFactory<String, SubscriptionDTO> kafkaListenerContainerFactory(
+            final KafkaProperties kafkaProperties) {
         final ConcurrentKafkaListenerContainerFactory<String, SubscriptionDTO> factory =
                 new ConcurrentKafkaListenerContainerFactory<>();
         factory.setConsumerFactory(consumerFactory(kafkaProperties));

@@ -1,7 +1,6 @@
 package com.subscription.mail;
 
 import lombok.AllArgsConstructor;
-import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -10,7 +9,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Async;
 
 @AllArgsConstructor
-class MailService {
+public class MailService {
     private static final Logger logger = LoggerFactory.getLogger(MailService.class);
 
     private MailProperties mailProperties;

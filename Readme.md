@@ -1,1 +1,1 @@
-checkout https://github.com/cwichula/adidas-subscription-challange readme file
+checkout https://github.com/cwichula/adidas-subscription readme file

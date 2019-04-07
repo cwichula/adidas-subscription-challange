@@ -16,7 +16,7 @@ public class MailService {
     private JavaMailSender javaMailSender;
 
     @KafkaListener(topics = "${KAFKA_TOPIC_NAME}", groupId = "${KAFKA_LISTENER_GROUP_ID}")
-    public void listen(final SubscriptionDTO subscriptionDTO) {
+    public void sendEmailMessage(final SubscriptionDTO subscriptionDTO) {
         logger.info("Consuming subscription: {}", subscriptionDTO);
         sendConfirmation(subscriptionDTO.getEmail());
     }
